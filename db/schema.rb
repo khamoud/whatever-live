@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130821022118) do
+ActiveRecord::Schema.define(:version => 20130825211711) do
 
   create_table "campaigns", :force => true do |t|
     t.integer  "budget"
@@ -70,9 +70,11 @@ ActiveRecord::Schema.define(:version => 20130821022118) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "name"
+    t.string   "username"
   end
 
   add_index "companies", ["email"], :name => "index_companies_on_email", :unique => true
   add_index "companies", ["reset_password_token"], :name => "index_companies_on_reset_password_token", :unique => true
+  add_index "companies", ["username"], :name => "index_companies_on_username", :unique => true
 
 end
