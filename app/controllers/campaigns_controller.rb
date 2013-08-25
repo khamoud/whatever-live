@@ -112,7 +112,7 @@ class CampaignsController < ApplicationController
                :type=> 'pie',
                :name=> 'Gender Breakdown',
                :data=> [
-                  ['Male',   240.0],
+                  ['Male',   24.0],
                   {
                      :name=> 'Female',    
                      :y=> 76,
@@ -250,7 +250,7 @@ class CampaignsController < ApplicationController
                :type=> 'pie',
                :name=> 'Gender Breakdown',
                :data=> [
-                  ['Male',   240.0],
+                  ['Male',   24.0],
                   {
                      :name=> 'Female',    
                      :y=> 76,
