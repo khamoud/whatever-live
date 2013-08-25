@@ -149,7 +149,7 @@
                   <div class="padd">
 
                     <!-- Bar chart (Blue color). jQuery Flot plugin used. -->
-                    <div id="bar-chart-actions"></div>
+                    <%= high_chart("my_id4", @chart)  %>
 
 
                   </div>
@@ -218,7 +218,7 @@
 	              <div class="widget wviolet">
 	                <!-- Widget head -->
 	                <div class="widget-head">
-	                  <div class="pull-left">Price Comparison - Likes</div>
+	                  <div class="pull-left">Price Comparison - Facebook Follows</div>
 	                  <div class="widget-icons pull-right">
 	                    <a href="#" class="wminimize"></a> 
 	                    <a href="#" class="wclose"></a>
@@ -231,7 +231,7 @@
 	                  <div class="padd">
 
 	                    <!-- Bar chart (Blue color). jQuery Flot plugin used. -->
-	                    <div id="bar-chart-likes"></div>
+	                    <%= high_chart("my_bar_div1", @bar_facebook) %>
 
 
 	                  </div>
@@ -259,7 +259,7 @@
 	                  <div class="padd">
 
 	                    <!-- Bar chart (Blue color). jQuery Flot plugin used. -->
-	                    <div id="bar-chart-followers"></div>
+	                    <%= high_chart("my_bar_div2", @bar_twitter) %>
 
 
 	                  </div>
@@ -287,8 +287,7 @@
 	                  <div class="padd">
 
 	                    <!-- Bar chart (Blue color). jQuery Flot plugin used. -->
-	                    <div id="bar-chart-pins"></div>
-
+	                    <%= high_chart("my_bar_div3", @bar_pins) %>
 
 	                  </div>
 	                </div>
@@ -317,7 +316,10 @@
 	                  <div class="padd">
 
 	                    <!-- Bar chart (Blue color). jQuery Flot plugin used. -->
-	                    <div id="pie-chart-gender"></div>
+                      <%= high_chart("my_id_gender", @chart_gender) do |c| %>
+                        <%= raw "options.tooltip.formatter = function() {return '<b>'+ this.point.name +'</b>: '+ this.y +' %';}"  %>
+                        <%= raw "options.plotOptions.pie.dataLabels.formatter = function() { if (this.y > 5) return this.point.name; }"  %>
+                      <% end %>
 
 
 	                  </div>
@@ -345,7 +347,10 @@
 	                  <div class="padd">
 
 	                    <!-- Bar chart (Blue color). jQuery Flot plugin used. -->
-	                    <div id="pie-chart-device"></div>
+	                    <%= high_chart("my_id5", @chart_device) do |c| %>
+                        <%= raw "options.tooltip.formatter = function() {return '<b>'+ this.point.name +'</b>: '+ this.y +' %';}"  %>
+                        <%= raw "options.plotOptions.pie.dataLabels.formatter = function() { if (this.y > 5) return this.point.name; }"  %>
+                      <% end %>
 
 
 	                  </div>
@@ -375,297 +380,297 @@
 
 <!-- Script for this page -->
 <script type="text/javascript">
-$(function () {
-        $('#bar-chart-actions').highcharts({
-            chart: {
-                type: 'column'
-            },
-            title: {
-                text: 'Social Actions'
-            },
-            subtitle: {
-                text: 'Campaign'
-            },
-            xAxis: {
-                categories: [
-                    'Email Shares',
-                    'FB Shares',
-                    'FB Likes',
-                    'FB Comments',
-                    'Friends Invited',
-                    'Twitter Followers',
-                    'Twitter Shares',
-                    'Pins',
-                    'Pinterest Followers',
-                    'Tumblr Shares'
-                ]
-            },
-            yAxis: {
-                min: 0,
-                title: {
-                    text: 'Number of Actions'
-                }
-            },
-            tooltip: {
-                headerFormat: '<span style="font-size:10px">{point.key}: <b>{point.y:.1f}</b></span><table>',
-                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name} </td>' +
-                    '<td style="padding:0"></td></tr>',
-                footerFormat: '</table>',
-                shared: true,
-                useHTML: true
-            },
-            plotOptions: {
-                column: {
-                    pointPadding: 0.2,
-                    borderWidth: 0
-                }
-            },
-            series: [{
-                name: 'Spreeify',
-                data: [<%=@campaign.email_shares %>,<%=@campaign.fb_shares %>,<%=@campaign.fb_likes %>,<%=@campaign.fb_comments %>,<%=@campaign.friends_invited %>,<%=@campaign.twitter_followers %>,<%=@campaign.twitter_shares %>,<%=@campaign.pins %>,<%=@campaign.pinterest_followers %>,<%=@campaign.tumblr_shares %> ]
+// $(function () {
+//         $('#bar-chart-actions').highcharts({
+//             chart: {
+//                 type: 'column'
+//             },
+//             title: {
+//                 text: 'Social Actions'
+//             },
+//             subtitle: {
+//                 text: 'Campaign'
+//             },
+//             xAxis: {
+//                 categories: [
+//                     'Email Shares',
+//                     'FB Shares',
+//                     'FB Likes',
+//                     'FB Comments',
+//                     'Friends Invited',
+//                     'Twitter Followers',
+//                     'Twitter Shares',
+//                     'Pins',
+//                     'Pinterest Followers',
+//                     'Tumblr Shares'
+//                 ]
+//             },
+//             yAxis: {
+//                 min: 0,
+//                 title: {
+//                     text: 'Number of Actions'
+//                 }
+//             },
+//             tooltip: {
+//                 headerFormat: '<span style="font-size:10px">{point.key}: <b>{point.y:.1f}</b></span><table>',
+//                 pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name} </td>' +
+//                     '<td style="padding:0"></td></tr>',
+//                 footerFormat: '</table>',
+//                 shared: true,
+//                 useHTML: true
+//             },
+//             plotOptions: {
+//                 column: {
+//                     pointPadding: 0.2,
+//                     borderWidth: 0
+//                 }
+//             },
+//             series: [{
+//                 name: 'Spreeify',
+//                 data: [<%=@campaign.email_shares %>,<%=@campaign.fb_shares %>,<%=@campaign.fb_likes %>,<%=@campaign.fb_comments %>,<%=@campaign.friends_invited %>,<%=@campaign.twitter_followers %>,<%=@campaign.twitter_shares %>,<%=@campaign.pins %>,<%=@campaign.pinterest_followers %>,<%=@campaign.tumblr_shares %> ]
     
-            }]
-        });
+//             }]
+//         });
 
-    });
-$(function () {
-        $('#bar-chart-followers').highcharts({
-            chart: {
-                type: 'column'
-            },
-            title: {
-                text: 'Price Comparison - Followers'
-            },
-            subtitle: {
-                text: 'Source: Imbue Marketing'
-            },
-            xAxis: {
-                categories: [
-                    'Typical Cost Per Follower'
+//     });
+// $(function () {
+//         $('#bar-chart-followers').highcharts({
+//             chart: {
+//                 type: 'column'
+//             },
+//             title: {
+//                 text: 'Price Comparison - Followers'
+//             },
+//             subtitle: {
+//                 text: 'Source: Imbue Marketing'
+//             },
+//             xAxis: {
+//                 categories: [
+//                     'Typical Cost Per Follower'
                                       
-                ]
-            },
-            yAxis: {
-                min: 0,
-                title: {
-                    text: 'Price ($)'
-                }
-            },
-            tooltip: {
-                headerFormat:  '<span style="font-size:10px">{point.key}</span><table>',
-                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                    '<td style="padding:0"><b>${point.y:.1f}0</b></td></tr>',
-                footerFormat: '</table>',
-                shared: true,
-                useHTML: true
-            },
-            plotOptions: {
-                column: {
-                    pointPadding: 0.2,
-                    borderWidth: 0
-                }
-            },
-            series: [{
-                name: 'Spreeify',
-                data: [ <%=@campaign.cost_per_twitter_follower %>]
+//                 ]
+//             },
+//             yAxis: {
+//                 min: 0,
+//                 title: {
+//                     text: 'Price ($)'
+//                 }
+//             },
+//             tooltip: {
+//                 headerFormat:  '<span style="font-size:10px">{point.key}</span><table>',
+//                 pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+//                     '<td style="padding:0"><b>${point.y:.1f}0</b></td></tr>',
+//                 footerFormat: '</table>',
+//                 shared: true,
+//                 useHTML: true
+//             },
+//             plotOptions: {
+//                 column: {
+//                     pointPadding: 0.2,
+//                     borderWidth: 0
+//                 }
+//             },
+//             series: [{
+//                 name: 'Spreeify',
+//                 data: [ <%=@campaign.cost_per_twitter_follower %>]
     
-            },
-        	{
-        	name: 'Twitter',
-        	data: [2]
-        	}
+//             },
+//         	{
+//         	name: 'Twitter',
+//         	data: [2]
+//         	}
 
 
-            ]
-        });
+//             ]
+//         });
 
-    });
-$(function () {
-        $('#bar-chart-pins').highcharts({
-            chart: {
-                type: 'column'
-            },
-            title: {
-                text: 'Price Comparison - Followers'
-            },
-            subtitle: {
-                text: 'Source: Imbue Marketing'
-            },
-            xAxis: {
-                categories: [
-                    'Typical Cost Per Follower'
+//     });
+// $(function () {
+//         $('#bar-chart-pins').highcharts({
+//             chart: {
+//                 type: 'column'
+//             },
+//             title: {
+//                 text: 'Price Comparison - Followers'
+//             },
+//             subtitle: {
+//                 text: 'Source: Imbue Marketing'
+//             },
+//             xAxis: {
+//                 categories: [
+//                     'Typical Cost Per Follower'
                                       
-                ]
-            },
-            yAxis: {
-                min: 0,
-                title: {
-                    text: 'Price ($)'
-                }
-            },
-            tooltip: {
-                headerFormat:  '<span style="font-size:10px">{point.key}</span><table>',
-                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                    '<td style="padding:0"><b>${point.y:.1f}0</b></td></tr>',
-                footerFormat: '</table>',
-                shared: true,
-                useHTML: true
-            },
-            plotOptions: {
-                column: {
-                    pointPadding: 0.2,
-                    borderWidth: 0
-                }
-            },
-            series: [{
-                name: 'Spreeify',
-                data: [ <%=@campaign.cost_per_pinterest_follower %>]
+//                 ]
+//             },
+//             yAxis: {
+//                 min: 0,
+//                 title: {
+//                     text: 'Price ($)'
+//                 }
+//             },
+//             tooltip: {
+//                 headerFormat:  '<span style="font-size:10px">{point.key}</span><table>',
+//                 pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+//                     '<td style="padding:0"><b>${point.y:.1f}0</b></td></tr>',
+//                 footerFormat: '</table>',
+//                 shared: true,
+//                 useHTML: true
+//             },
+//             plotOptions: {
+//                 column: {
+//                     pointPadding: 0.2,
+//                     borderWidth: 0
+//                 }
+//             },
+//             series: [{
+//                 name: 'Spreeify',
+//                 data: [ <%=@campaign.cost_per_pinterest_follower %>]
     
-            },
-        	{
-        	name: 'Pinterest',
-        	data: [0.5]
-        	}
+//             },
+//         	{
+//         	name: 'Pinterest',
+//         	data: [0.5]
+//         	}
 
 
-            ]
-        });
+//             ]
+//         });
 
-    });
-$(function () {
-        $('#bar-chart-likes').highcharts({
-            chart: {
-                type: 'column'
-            },
-            title: {
-                text: 'Price Comparison - Facebook Likes'
-            },
-            subtitle: {
-                text: 'Source: Imbue Marketing'
-            },
-            xAxis: {
-                categories: [
-                    'Typical Cost Per Like'
+//     });
+// $(function () {
+//         $('#bar-chart-likes').highcharts({
+//             chart: {
+//                 type: 'column'
+//             },
+//             title: {
+//                 text: 'Price Comparison - Facebook Likes'
+//             },
+//             subtitle: {
+//                 text: 'Source: Imbue Marketing'
+//             },
+//             xAxis: {
+//                 categories: [
+//                     'Typical Cost Per Like'
                                       
-                ]
-            },
-            yAxis: {
-                min: 0,
-                title: {
-                    text: 'Price ($)'
-                }
-            },
-            tooltip: {
-                headerFormat:  '<span style="font-size:10px">{point.key}</span><table>',
-                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                    '<td style="padding:0"><b>${point.y:.1f}0</b></td></tr>',
-                footerFormat: '</table>',
-                shared: true,
-                useHTML: true
-            },
-            plotOptions: {
-                column: {
-                    pointPadding: 0.2,
-                    borderWidth: 0
-                }
-            },
-            series: [{
-                name: 'Spreeify',
-                data: [<%=@campaign.cost_per_fb_like %>]
+//                 ]
+//             },
+//             yAxis: {
+//                 min: 0,
+//                 title: {
+//                     text: 'Price ($)'
+//                 }
+//             },
+//             tooltip: {
+//                 headerFormat:  '<span style="font-size:10px">{point.key}</span><table>',
+//                 pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+//                     '<td style="padding:0"><b>${point.y:.1f}0</b></td></tr>',
+//                 footerFormat: '</table>',
+//                 shared: true,
+//                 useHTML: true
+//             },
+//             plotOptions: {
+//                 column: {
+//                     pointPadding: 0.2,
+//                     borderWidth: 0
+//                 }
+//             },
+//             series: [{
+//                 name: 'Spreeify',
+//                 data: [<%=@campaign.cost_per_fb_like %>]
     
-            },
-            {
+//             },
+//             {
 
-            name: 'Facebook',
-            data: [1.07]
+//             name: 'Facebook',
+//             data: [1.07]
 
-        	}
+//         	}
 
-            ]
-        });
+//             ]
+//         });
 
-    });
-$(function () {
-    $('#pie-chart-gender').highcharts({
-        chart: {
-            plotBackgroundColor: null,
-            plotBorderWidth: null,
-            plotShadow: false
-        },
-        title: {
-            text: 'Campaign Demographics'
-        },
-        tooltip: {
-    	    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-        },
-        plotOptions: {
-            pie: {
-                allowPointSelect: true,
-                cursor: 'pointer',
-                dataLabels: {
-                    enabled: true,
-                    color: '#000000',
-                    connectorColor: '#000000',
-                    format: '<b>{point.name}</b>: {point.percentage:.1f} %'
-                }
-            }
-        },
-        series: [{
-            type: 'pie',
-            name: 'Demographic',
-            data: [
-                ['Male',   24.0],
-                {
-                    name: 'Female',
-                    y: 76.0,
-                    sliced: true,
-                    selected: true
-                }
-            ]
-        }]
-    });
-});
-$(function () {
-    $('#pie-chart-device').highcharts({
-        chart: {
-            plotBackgroundColor: null,
-            plotBorderWidth: null,
-            plotShadow: false
-        },
-        title: {
-            text: 'Device Breakdown'
-        },
-        tooltip: {
-    	    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-        },
-        plotOptions: {
-            pie: {
-                allowPointSelect: true,
-                cursor: 'pointer',
-                dataLabels: {
-                    enabled: true,
-                    color: '#000000',
-                    connectorColor: '#000000',
-                    format: '<b>{point.name}</b>: {point.percentage:.1f} %'
-                }
-            }
-        },
-        series: [{
-            type: 'pie',
-            name: 'Device',
-            data: [
-                ['Desktop',   60.0],
-                ['Mobile',   30.0],
-                {
-                    name: 'Tablet',
-                    y: 10.0,
-                    sliced: true,
-                    selected: true
-                }
-            ]
-        }]
-    });
-});
+//     });
+// $(function () {
+//     $('#pie-chart-gender').highcharts({
+//         chart: {
+//             plotBackgroundColor: null,
+//             plotBorderWidth: null,
+//             plotShadow: false
+//         },
+//         title: {
+//             text: 'Campaign Demographics'
+//         },
+//         tooltip: {
+//     	    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+//         },
+//         plotOptions: {
+//             pie: {
+//                 allowPointSelect: true,
+//                 cursor: 'pointer',
+//                 dataLabels: {
+//                     enabled: true,
+//                     color: '#000000',
+//                     connectorColor: '#000000',
+//                     format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+//                 }
+//             }
+//         },
+//         series: [{
+//             type: 'pie',
+//             name: 'Demographic',
+//             data: [
+//                 ['Male',   24.0],
+//                 {
+//                     name: 'Female',
+//                     y: 76.0,
+//                     sliced: true,
+//                     selected: true
+//                 }
+//             ]
+//         }]
+//     });
+// });
+// $(function () {
+//     $('#pie-chart-device').highcharts({
+//         chart: {
+//             plotBackgroundColor: null,
+//             plotBorderWidth: null,
+//             plotShadow: false
+//         },
+//         title: {
+//             text: 'Device Breakdown'
+//         },
+//         tooltip: {
+//     	    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+//         },
+//         plotOptions: {
+//             pie: {
+//                 allowPointSelect: true,
+//                 cursor: 'pointer',
+//                 dataLabels: {
+//                     enabled: true,
+//                     color: '#000000',
+//                     connectorColor: '#000000',
+//                     format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+//                 }
+//             }
+//         },
+//         series: [{
+//             type: 'pie',
+//             name: 'Device',
+//             data: [
+//                 ['Desktop',   60.0],
+//                 ['Mobile',   30.0],
+//                 {
+//                     name: 'Tablet',
+//                     y: 10.0,
+//                     sliced: true,
+//                     selected: true
+//                 }
+//             ]
+//         }]
+//     });
+// });
 
 
 </script>
