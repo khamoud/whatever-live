@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   def after_sign_in_path_for(resource)
   	if current_company.user_level == 9
-  		company_campaigns_path(Company.find(first).campaigns(1))
+  		company_campaigns_path(Company.find(first))
   	else
     	company_campaigns_path(current_company)
     end
