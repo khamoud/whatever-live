@@ -4,7 +4,7 @@ class CampaignsController < ApplicationController
   def index
     @campaigns = Campaign.all
     @companies = Company.all
-    @company = Company.find(current_company.id)
+    @company = Company.find(params[:company_id])
     @campaign = @company.campaigns.last
 
         #Charts begin here
@@ -284,7 +284,22 @@ class CampaignsController < ApplicationController
 
 
   def edit
+    @campaigns = Campaign.all
+    @companies = Company.all
   	@company = Company.find(params[:company_id])
   	@campaign = @company.campaigns.find(params[:id])
+  end
+
+  def update
+    @campaign = Company.find(params[:company_id]).campaigns.find(params[:id])
+    @company = Company.find(params[:company_id])
+    if @campaign.update_attributes(params[:campaign])
+      redirect_to :controller=>'campaigns', :action => 'show', :id => @campaign.id
+      flash[:success] = "Update Success"
+    else
+      redirect_to :controller=>'campaigns', :action => 'show', :id => @campaign.id
+      flash[:failure] = "Update unsuccessful"
+    end
+
   end
 end
