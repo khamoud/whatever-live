@@ -1,6 +1,9 @@
 class CampaignsController < ApplicationController
   before_filter :authenticate_company!
+  before_filter :allow_edit, only: :edit
   def index
+    @campaigns = Campaign.all
+    @companies = Company.all
     @company = Company.find(current_company.id)
     @campaign = @company.campaigns.last
 
@@ -139,6 +142,8 @@ class CampaignsController < ApplicationController
   end
 
   def show
+      @campaigns = Campaign.all
+      @companies = Company.all
      	@company = Company.find(params[:company_id])
     	@campaign = @company.campaigns.find(params[:id])
       

@@ -12,14 +12,21 @@
 
             <li class="nviolet current"><a href="#"> Dashboard</a></li>
 
+
             <li class="has_submenu nviolet open">
               <a href="#">
                 Campaigns
               </a>
               <ul>
-              	<% @company.campaigns.all.each do |campaign| %>
-               		<li><a href="/companies/<%=campaign.company.id%>/campaigns/<%=campaign.id%>"><%= campaign.campaign_name %></a></li>
-               	<%end%>
+                <% if current_company.user_level != 9 %>
+                	<% @company.campaigns.all.each do |campaign| %>
+                 		<li><a href="/companies/<%=campaign.company.id%>/campaigns/<%=campaign.id%>"><%= campaign.campaign_name %></a></li>
+                 	<%end%>
+                <% else %>
+                  <% @campaigns.each do |campaign| %>
+                    <li><a href="/companies/<%=campaign.company.id%>/campaigns/<%=campaign.id%>"><%= campaign.campaign_name %></a></li>
+                  <% end %>
+                <% end %>
               </ul>
             </li>
           </ul>
