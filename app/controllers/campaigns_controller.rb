@@ -167,43 +167,14 @@ class CampaignsController < ApplicationController
     end
     #social actions chart ends
 
-    #chart comparing facebook cost to spreeify cost
-    @bar_facebook = LazyHighCharts::HighChart.new('column') do |f|
-      f.series(:name=>'Facebook',:data=> [1.07])
-      f.series(:name=>'Spreeify',:data=>[@campaign.cost_per_fb_like] )   
-      f.title({ :text=>"Price Comparison - Facebook Followers"})
-
-      ###  Options for Bar
-      ### f.options[:chart][:defaultSeriesType] = "bar"
-      ### f.plot_options({:series=>{:stacking=>"normal"}}) 
-
-      ## or options for column
-      f.options[:chart][:defaultSeriesType] = "column"
-      f.plot_options({:column=>{:stacking=>"normal"}})
-    end
-    #end chart
 
     #chart comparing twitter to spreeify
-    @bar_twitter = LazyHighCharts::HighChart.new('column') do |f|
-      f.series(:name=>'Twitter',:data=> [2])
-      f.series(:name=>'Spreeify',:data=>[@campaign.cost_per_twitter_follower] )   
-      f.title({ :text=>"Price Comparison - Twitter Followers"})
-
-      ###  Options for Bar
-      ### f.options[:chart][:defaultSeriesType] = "bar"
-      ### f.plot_options({:series=>{:stacking=>"normal"}}) 
-
-      ## or options for column
-      f.options[:chart][:defaultSeriesType] = "column"
-      f.plot_options({:column=>{:stacking=>"normal"}})
-    end
-    #end chart
-
-    #chart comparing pinterest costs
-    @bar_pins = LazyHighCharts::HighChart.new('column') do |f|
-      f.series(:name=>'Pinterest',:data=> [0.5])
-      f.series(:name=>'Spreeify',:data=>[@campaign.cost_per_pinterest_follower] )   
-      f.title({ :text=>"Price Comparison - Pinterest Followers"})
+    @bar_comparison = LazyHighCharts::HighChart.new('column') do |f|
+      f.series(:name=>'Twitter',:data=> [2, 0, 0])
+      f.series(:name=>'Facebook',:data=>[0,1.07,0])
+      f.series(:name=> 'Pinterest',:data=>[0,0,0.5])
+      f.series(:name=>'Spreeify',:data=>[@campaign.cost_per_twitter_follower, @campaign.cost_per_fb_like, @cost_per_pinterest_follower] )   
+      f.title({ :text=>"Price Comparison - Social Actions"})
 
       ###  Options for Bar
       ### f.options[:chart][:defaultSeriesType] = "bar"
