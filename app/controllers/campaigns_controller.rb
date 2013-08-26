@@ -60,7 +60,7 @@ class CampaignsController < ApplicationController
     @bar_pins = LazyHighCharts::HighChart.new('column') do |f|
       f.series(:name=>'Pinterest',:data=> [0.5])
       f.series(:name=>'Spreeify',:data=>[@campaign.cost_per_pinterest_follower] )   
-      f.title({ :text=>"Price Comparison - Twitter Follows"})
+      f.title({ :text=>"Price Comparison - Pinterest Followers"})
 
       ###  Options for Bar
       ### f.options[:chart][:defaultSeriesType] = "bar"
