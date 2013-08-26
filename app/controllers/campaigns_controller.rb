@@ -28,7 +28,7 @@ class CampaignsController < ApplicationController
     @bar_facebook = LazyHighCharts::HighChart.new('column') do |f|
       f.series(:name=>'Facebook',:data=> [1.07])
       f.series(:name=>'Spreeify',:data=>[@campaign.cost_per_fb_like] )   
-      f.title({ :text=>"Price Comparison - Facebook Follows"})
+      f.title({ :text=>"Price Comparison - Facebook Followers"})
 
       ###  Options for Bar
       ### f.options[:chart][:defaultSeriesType] = "bar"
@@ -44,7 +44,7 @@ class CampaignsController < ApplicationController
     @bar_twitter = LazyHighCharts::HighChart.new('column') do |f|
       f.series(:name=>'Twitter',:data=> [2])
       f.series(:name=>'Spreeify',:data=>[@campaign.cost_per_twitter_follower] )   
-      f.title({ :text=>"Price Comparison - Twitter Follows"})
+      f.title({ :text=>"Price Comparison - Twitter Followers"})
 
       ###  Options for Bar
       ### f.options[:chart][:defaultSeriesType] = "bar"
@@ -166,7 +166,7 @@ class CampaignsController < ApplicationController
     @bar_facebook = LazyHighCharts::HighChart.new('column') do |f|
       f.series(:name=>'Facebook',:data=> [1.07])
       f.series(:name=>'Spreeify',:data=>[@campaign.cost_per_fb_like] )   
-      f.title({ :text=>"Price Comparison - Facebook Follows"})
+      f.title({ :text=>"Price Comparison - Facebook Followers"})
 
       ###  Options for Bar
       ### f.options[:chart][:defaultSeriesType] = "bar"
@@ -182,7 +182,7 @@ class CampaignsController < ApplicationController
     @bar_twitter = LazyHighCharts::HighChart.new('column') do |f|
       f.series(:name=>'Twitter',:data=> [2])
       f.series(:name=>'Spreeify',:data=>[@campaign.cost_per_twitter_follower] )   
-      f.title({ :text=>"Price Comparison - Twitter Follows"})
+      f.title({ :text=>"Price Comparison - Twitter Followers"})
 
       ###  Options for Bar
       ### f.options[:chart][:defaultSeriesType] = "bar"
@@ -198,7 +198,7 @@ class CampaignsController < ApplicationController
     @bar_pins = LazyHighCharts::HighChart.new('column') do |f|
       f.series(:name=>'Pinterest',:data=> [0.5])
       f.series(:name=>'Spreeify',:data=>[@campaign.cost_per_pinterest_follower] )   
-      f.title({ :text=>"Price Comparison - Twitter Follows"})
+      f.title({ :text=>"Price Comparison - Pinterest Followers"})
 
       ###  Options for Bar
       ### f.options[:chart][:defaultSeriesType] = "bar"
