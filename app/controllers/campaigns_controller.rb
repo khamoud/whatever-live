@@ -171,8 +171,8 @@ class CampaignsController < ApplicationController
     #chart comparing twitter to spreeify
     @bar_comparison = LazyHighCharts::HighChart.new('column') do |f|
             
-      f.series(:name=>'Twitter',:data=> [2, 0, 0])
-      f.series(:name=>'Facebook',:data=>[0,1.07,0])
+      f.series(:name=>'Twitter',:data=> [2, 0])
+      f.series(:name=>'Facebook',:data=>[0,1.07])
       f.series(:name=>'Spreeify',:data=>[@campaign.cost_per_twitter_follower, @campaign.cost_per_fb_like] )   
 
   
