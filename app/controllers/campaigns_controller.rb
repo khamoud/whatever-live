@@ -162,7 +162,8 @@ class CampaignsController < ApplicationController
                      'Pins',
                      'Pinterest Followers',
                      'Tumblr Shares']
-        f.labels(:items=>[:html=>"Total Social Actions", :style=>{:left=>"40px", :top=>"8px", :color=>"black"} ])      
+        f.labels(:items=>[:html=>"Total Social Actions", :style=>{:left=>"40px", :top=>"8px", :color=>"black"} ])
+        f.colors(['#663399'])      
         f.series(:type=> 'column',:name=> 'Spreeify',:data=> [@campaign.email_shares ,@campaign.fb_shares ,@campaign.fb_likes ,@campaign.fb_comments ,@campaign.friends_invited ,@campaign.twitter_followers ,@campaign.twitter_shares, @campaign.pins, @campaign.pinterest_followers, @campaign.tumblr_shares ])
     end
     #social actions chart ends
@@ -173,6 +174,7 @@ class CampaignsController < ApplicationController
             
       f.series(:name=>'Twitter',:data=> [2, 0])
       f.series(:name=>'Facebook',:data=>[0,1.07])
+      f.colors(['#8EC1DA','#3B5998','#663399'])  
       f.series(:name=>'Spreeify',:data=>[@campaign.cost_per_twitter_follower, @campaign.cost_per_fb_like] )   
 
   
