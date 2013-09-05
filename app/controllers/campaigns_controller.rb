@@ -1,6 +1,7 @@
 class CampaignsController < ApplicationController
   before_filter :authenticate_company!
-  before_filter :allow_edit, only: :edit
+  before_filter :allow_edit, only: [:edit, :new]
+  
   def index
     @campaigns = Campaign.all
     @companies = Company.all
@@ -275,6 +276,22 @@ class CampaignsController < ApplicationController
       redirect_to :controller=>'campaigns', :action => 'show', :id => @campaign.id
       flash[:failure] = "Update unsuccessful"
     end
+  end
+  
+  def new
+    @campaigns = Company.find(params[:company_id]).campaigns.all
+    @company = Company.find(params[:company_id])
+    @campaign = current_company.campaigns.new
+  end
 
+  def create
+    @campaign = current_company.campaigns.new
+    if @campaign.save
+      redirect_to :controller=>'campaigns', :action => 'show', :id => @campaign.id
+      flash[:success] = "Update Success"
+    else
+      redirect_to :controller=>'campaigns', :action => 'show', :id => @campaign.id
+      flash[:failure] = "Update unsuccessful"
+    end
   end
 end
