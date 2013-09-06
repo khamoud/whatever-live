@@ -1,6 +1,6 @@
 class CampaignsController < ApplicationController
   before_filter :authenticate_company!
-  before_filter :authenticate_user!
+
   before_filter :allow_edit, only: [:edit, :new]
   
   def index
