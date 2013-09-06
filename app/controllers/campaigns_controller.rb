@@ -1,5 +1,6 @@
 class CampaignsController < ApplicationController
   before_filter :authenticate_company!
+  before_filter :authenticate_user!
   before_filter :allow_edit, only: [:edit, :new]
   
   def index
@@ -298,4 +299,10 @@ class CampaignsController < ApplicationController
     end
   end
 
+
+  def destroy
+    @campaign = Campaign.find(params[:campaign_id])
+    @campaign.destroy
+    redirect_to root_url
+  end
 end
