@@ -279,9 +279,10 @@ class CampaignsController < ApplicationController
   end
   
   def new
-    @campaigns = Company.find(params[:company_id]).campaigns.all
+    @campaigns = Campaign.all
+    @companies = Company.all
     @company = Company.find(params[:company_id])
-    @campaign = current_company.campaigns.new
+    @campaign = @company.campaigns.new
   end
 
   def create
