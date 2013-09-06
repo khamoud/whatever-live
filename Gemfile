@@ -38,10 +38,12 @@ gem 'jquery-rails'
 # gem 'capistrano'
 
 # To use debugger
-# gem 'debugger'
+gem 'debugger'
 gem 'devise'
 gem 'hirb'
 gem 'flot-rails'
 gem 'cancan'
 gem 'lazy_high_charts'
 gem 'simple_form'
+gem 'prawn'
+gem 'rails-footnotes', '>= 3.7.9', :group => :development

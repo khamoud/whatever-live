@@ -285,13 +285,16 @@ class CampaignsController < ApplicationController
   end
 
   def create
-    @campaign = current_company.campaigns.new
-    if @campaign.save
+    @campaign = current_company.campaigns.create(params[:campaign])
+    @company = Company.find(params[:company_id])
+
+    if @campaign.save(params[:campaign])
       redirect_to :controller=>'campaigns', :action => 'show', :id => @campaign.id
-      flash[:success] = "Update Success"
+      flash[:success] = "Create Success"
     else
       redirect_to :controller=>'campaigns', :action => 'show', :id => @campaign.id
-      flash[:failure] = "Update unsuccessful"
+      flash[:failure] = "Create unsuccessful"
     end
   end
+
 end
