@@ -12,9 +12,13 @@
 	    </div>
 	    <div class="matter">
     	    <div class="container-fluid">
+    	    	<form action="">
+
+    	    	</form>
     	    		<%= simple_form_for [@company, @campaign] do |f| %>
 	            	<%= f.input :budget %>
 	            	<%= f.input :campaign_name %>
+	            	<%= f.association :user %>
 	            	<%= f.input :conversion_rate %>
 	            	<%= f.input :quoted_cpa %>
 	            	<%= f.input :end_cpa %>
@@ -22,7 +26,6 @@
 	            	<%= f.input :participants %>
 	            	<%= f.input :total_actions %>
 	            	<%= f.input :unique_visitors %>
-
 					<%= f.input :email_shares %>
 					<%= f.input :fb_shares %>
 					<%= f.input :fb_likes %>

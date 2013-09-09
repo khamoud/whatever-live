@@ -9,6 +9,7 @@ class CampaignsController < ApplicationController
     @company = Company.find(params[:company_id])
     @campaign = @company.campaigns.last
 
+
         #Charts begin here
 
     #social action chart
@@ -148,6 +149,7 @@ class CampaignsController < ApplicationController
       @companies = Company.all
      	@company = Company.find(params[:company_id])
     	@campaign = @company.campaigns.find(params[:id])
+      @users = User.all
       
     #Charts begin here
 
@@ -291,7 +293,7 @@ class CampaignsController < ApplicationController
     @company = Company.find(params[:company_id])
 
     if @campaign.save(params[:campaign])
-      redirect_to :controller=>'campaigns', :action => 'show', :id => @campaign.id
+      redirect_to root_url
       flash[:success] = "Create Success"
     else
       redirect_to :controller=>'campaigns', :action => 'show', :id => @campaign.id
@@ -301,7 +303,8 @@ class CampaignsController < ApplicationController
 
 
   def destroy
-    @campaign = Campaign.find(params[:campaign_id])
+    @company = Company.find(params[:company_id])
+    @campaign = @company.campaigns.find(params[:id])
     @campaign.destroy
     redirect_to root_url
   end

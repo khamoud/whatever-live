@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130906221052) do
+ActiveRecord::Schema.define(:version => 20130909222105) do
 
   create_table "campaigns", :force => true do |t|
     t.integer  "budget"
@@ -78,6 +78,19 @@ ActiveRecord::Schema.define(:version => 20130906221052) do
   add_index "companies", ["reset_password_token"], :name => "index_companies_on_reset_password_token", :unique => true
   add_index "companies", ["username"], :name => "index_companies_on_username", :unique => true
 
+  create_table "rails_admin_histories", :force => true do |t|
+    t.text     "message"
+    t.string   "username"
+    t.integer  "item"
+    t.string   "table"
+    t.integer  "month",      :limit => 2
+    t.integer  "year",       :limit => 5
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+  end
+
+  add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
+
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false
@@ -96,5 +109,15 @@ ActiveRecord::Schema.define(:version => 20130906221052) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "views", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "campaign_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "views", ["campaign_id"], :name => "index_views_on_campaign_id"
+  add_index "views", ["user_id"], :name => "index_views_on_user_id"
 
 end

@@ -47,3 +47,4 @@ gem 'lazy_high_charts'
 gem 'simple_form'
 gem 'prawn'
 gem 'rails-footnotes', '>= 3.7.9', :group => :development
+gem 'rails_admin'
