@@ -14,7 +14,7 @@ Devise.setup do |config|
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
   # available as additional gems.
   require 'devise/orm/active_record'
-
+  config.secret_key = 'ff2ab1380231565dafeb152f9bda14fb2a084364feff731c2c16b1f06d4dc9ea54ad99b9e118cba830a4d916a78d7bf8a57cfe068e75623528978ec410b8b95f'
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
   # just :email. You can configure it to use [:username, :subdomain], so for
