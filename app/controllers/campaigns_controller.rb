@@ -149,7 +149,7 @@ class CampaignsController < ApplicationController
       @companies = Company.all
      	@company = Company.find(params[:company_id])
     	@campaign = @company.campaigns.find(params[:id])
-      @users = User.all
+
       
     #Charts begin here
 

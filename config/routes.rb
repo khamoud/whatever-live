@@ -1,5 +1,4 @@
 SpreeDash::Application.routes.draw do
-  devise_for :companies
 
   
 

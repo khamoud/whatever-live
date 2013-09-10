@@ -1,5 +1,6 @@
 	<%= render "shared/header" %>
 	<%= render "shared/leftnavbar" %>
+  <% if !@campaign.id.nil?%>
 <div class="content">
   	<!-- Main bar -->
   	<div class="mainbar">
@@ -245,3 +246,4 @@
 
 </div>
 <!-- Content ends -->
+<%end%>
