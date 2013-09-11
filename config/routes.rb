@@ -1,9 +1,8 @@
 SpreeDash::Application.routes.draw do
 
-  devise_for :users
 
   devise_for :companies
-  resources :views
+  
   resources :companies do
     resources :campaigns
   end
