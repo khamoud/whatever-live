@@ -7,9 +7,9 @@ SpreeDash::Application.routes.draw do
     resources :campaigns
   end
 
-  # devise_scope :company do
-  #   root :to => "devise/sessions#new"
-  # end
+  devise_scope :company do
+    root :to => "devise/sessions#new"
+  end
    mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
   # The priority is based upon order of creation:
   # first created -> highest priority.
