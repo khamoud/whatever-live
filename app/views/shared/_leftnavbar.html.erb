@@ -22,7 +22,6 @@
                 	<% @company.campaigns.all.each do |campaign| %>
                  		<li><a href="/companies/<%=campaign.company.id%>/campaigns/<%=campaign.id%>"><%= campaign.campaign_name %></a></li>
                  	<%end%>
-                <% elsif !current_company.campaigns.nil? %>
                   <% @campaigns.each do |campaign| %>
                     <li><a href="/companies/<%=campaign.company.id%>/campaigns/<%=campaign.id%>"><%= campaign.campaign_name %></a></li>
                   <% end %>
