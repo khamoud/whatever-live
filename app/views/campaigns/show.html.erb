@@ -17,15 +17,6 @@
           <%= @campaign.campaign_name %>
           <!-- page meta -->
           <span class="page-meta">Dashboard for campaign from <%= @campaign.start.to_formatted_s(:long)  %> through <%= @campaign.end.to_formatted_s(:long) %></span>
-          	<% if current_company.user_level == 9 %>
-	      		<a href="/companies/<%=@campaign.company.id%>/campaigns/<%=@campaign.id%>/edit" class="btn">Edit this campaign</a><br>
-              <form action="/companies/<%= @campaign.company.id%>/campaigns/<%=@campaign.id%>" method="post">
-                <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-                <input type="hidden" name="_method" value="delete">
-                <input type="submit" value="Delete This Campaign" class="btn">
-              </form>
-
-	      	<% end %>
         </h2>
 
 
