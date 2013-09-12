@@ -6,7 +6,7 @@ SpreeDash::Application.routes.draw do
   resources :companies do
     resources :campaigns
   end
-
+  
   devise_scope :company do
     root :to => "devise/sessions#new"
   end
