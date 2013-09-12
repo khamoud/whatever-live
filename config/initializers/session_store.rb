@@ -2,9 +2,9 @@
 
 #SpreeDash::Application.config.session_store :cookie_store, key: '_spree_dash_session'
 if Rails.env.production?
-Appname::Application.config.session_store :cookie_store, {:key => '_cookie_name', :domain => :all}
+SpreeDash::Application.config.session_store :cookie_store, {:key => '_cookie_name', :domain => :all}
 else
-Appname::Application.config.session_store :cookie_store, :key => '_cookie_name'
+SpreeDash::Application.config.session_store :cookie_store, :key => '_cookie_name'
 end
 # Use the database for sessions instead of the cookie-based default,
 # which shouldn't be used to store highly confidential information
